@@ -25,7 +25,7 @@ steps:
     args:
       - -c
       - |
-        docker image build --tag ${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/demo:$COMMIT_SHA .
+        docker image build --tag ${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/demo-eur:$COMMIT_SHA .
 
   - id: kubeval
     dir: hello-cloudbuild-v2
@@ -37,4 +37,4 @@ steps:
         helm template ./k8s/demo/ | kubeval
 
 images:
-  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/demo:$COMMIT_SHA
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/demo-eur:$COMMIT_SHA
