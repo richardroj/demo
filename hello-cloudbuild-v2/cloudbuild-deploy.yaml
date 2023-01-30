@@ -12,7 +12,7 @@ steps:
 
   - id: deploy
     dir: hello-cloudbuild-v2
-    name: cloudnatived/helm-cloudbuilder
+    name: richardroj/helm-cloudbuilder
     env:
       - KUBECONFIG=/workspace/.kube/config
     args:
@@ -20,12 +20,12 @@ steps:
       - upgrade
       - --install
       - --create-namespace
-      - ${TAG_NAME}-demo
-      - --namespace=${TAG_NAME}-demo
+      - ${TAG_NAME}-1.0
+      - --namespace=${TAG_NAME}-1.0 
       - --values
       - k8s/demo/${TAG_NAME}-values.yaml
       - --set
-      - container.image=${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/demo
+      - container.image=${_REGION}-docker.pkg.dev/$PROJECT_ID/demo/1.0
       - --set
       - container.tag=${COMMIT_SHA}
       - ./k8s/demo
